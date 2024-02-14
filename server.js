@@ -21,6 +21,11 @@ app.get("/", (req, res) => {
 app.post("/add-spending", (req, res) => {
   const { description, price, category } = req.body;
 
+  if (!description || !price || !category) {
+    res.status(400).send("Tous les champs doivent être remplis.");
+    return;
+  }
+
   const newSpending = {
     description,
     price,

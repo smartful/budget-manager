@@ -21,6 +21,8 @@
       <h3>Saisissez vos dépenses</h3>
 
       <div class="form-container">
+        <div id="error-message" class="error"></div>
+
         <form hx-post="/add-spending" hx-trigger="submit" hx-target="#spending">
           <label for="description">Produit</label>
           <input type="text" name="description" id="description" />
@@ -54,5 +56,16 @@
     </div>
 
     <footer>SMARTFUL 2024 - Tout droit réservé</footer>
+    <script>
+      document.body.addEventListener("htmx:responseError", (event) => {
+        let errorElement = document.getElementById("error-message");
+        let errorClassElement = document.querySelector(".error");
+        if (errorElement) {
+          errorElement.innerText =
+            "Une erreur est survenue : " + event.detail.xhr.responseText;
+        }
+        errorClassElement.style.display = "block";
+      });
+    </script>
   </body>
 </html>
