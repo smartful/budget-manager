@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Prix</th>
+      <th>Catégorie</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% spendings.forEach(function(spending) { %>
+    <tr>
+      <td><%= spending.description %></td>
+      <td><%= spending.price %> €</td>
+      <td><%= spending.category %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>

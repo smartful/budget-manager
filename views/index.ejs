@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.10"
+      integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./style.css" />
+    <title>Budget</title>
+  </head>
+  <body>
+    <header>
+      <h1><%= title %></h1>
+    </header>
+
+    <div class="container">
+      <h2 class="sub-title">Managez votre budget</h2>
+      <h3>Saisissez vos dépenses</h3>
+
+      <div class="form-container">
+        <form hx-post="/add-spending" hx-trigger="submit" hx-target="#spending">
+          <label for="description">Produit</label>
+          <input type="text" name="description" id="description" />
+
+          <label for="price">Prix (en euros)</label>
+          <input
+            type="number"
+            min="0"
+            step="0.01"
+            placeholder="0.00"
+            name="price"
+            id="price"
+          />
+
+          <label for="category-select">Catégorie</label>
+          <select name="category" id="category-select">
+            <option value="">--Choisissez une catégorie--</option>
+            <option value="Alimentation">Alimentation</option>
+            <option value="Loisir">Loisir</option>
+            <option value="Logement">Logement</option>
+            <option value="Bricolage">Bricolage</option>
+            <option value="Transport">Transport</option>
+          </select>
+
+          <button type="submit">Valider</button>
+        </form>
+      </div>
+
+      <h3>Dépenses</h3>
+      <div id="spending"><%- include('spending-table') %></div>
+    </div>
+
+    <footer>SMARTFUL 2024 - Tout droit réservé</footer>
+  </body>
+</html>
