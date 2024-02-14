@@ -4,7 +4,9 @@
 
 A simple budget manager, made in Node JS, Express JS, EJS and HTMX.
 
-## Installation
+## Get Started
+
+### Installation
 
 ```
 npm install
